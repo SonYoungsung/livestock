@@ -3,6 +3,7 @@ import { Row, Col, Layout, Menu } from "antd";
 import "antd/dist/antd.css";
 import { Route, Switch } from "react-router-dom";
 import LayoutHeader from "./components/Header";
+import MainPresenter from "../main/MainPresenter";
 
 const { Sider, Content } = Layout;
 
@@ -25,7 +26,10 @@ function MainLayout() {
         </Col>
         <Col span={8}>
           <Content>
-            <Switch>{/* <Route exact path="/" component={} /> */}</Switch>
+            <Switch>
+              <Route exact path="/" component={MainPresenter} />
+              <Route exact path="/dashboard" component={MainPresenter} />{" "}
+            </Switch>
           </Content>
         </Col>
       </Row>
