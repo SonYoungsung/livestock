@@ -1,8 +1,9 @@
 import React from "react";
-import { gql } from "@apollo/client";
+import SignUpPresenter from "./SignUpPresenter";
+import { signUp } from "../../../api/firebase/auth";
 
 function SignUpContainer() {
-  return <div></div>;
+  return <SignUpPresenter signUp={signUp}></SignUpPresenter>;
 }
 
 export default SignUpContainer;

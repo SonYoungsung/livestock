@@ -1,7 +1,9 @@
 import React from "react";
+import SignInPresenter from "./SignInPresenter";
+import { signIn } from "../../../api/firebase/auth";
 
 function SignInContainer() {
-  return <div></div>;
+  return <SignInPresenter signIn={signIn}></SignInPresenter>;
 }
 
 export default SignInContainer;

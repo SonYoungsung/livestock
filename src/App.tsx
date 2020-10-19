@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, createContext } from "react";
 import { gql, useQuery } from "@apollo/client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,15 @@ import GlobalStyle from "./assets/style/GlobalStyle";
 import Theme from "./assets/style/Theme";
 import { HashRouter } from "react-router-dom";
 import Routes from "./routes/Routes";
+import { ViewContext } from "./routes/auth/AuthPresenter";
+import { uid } from "./api/firebase/auth";
+
+type CType = {
+  isLoggedIn: {
+    login: boolean;
+    setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+  };
+};
 
 const Wrapper = styled.div`
   margin: 0 auto;
@@ -14,20 +23,25 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const isLoggedIn: boolean = true;
+const LoginContext = createContext<CType | undefined>(undefined);
 
 function App() {
+  const [login, setLogin] = useState(uid === undefined ? false : true);
+
   return (
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
-      <HashRouter>
-        <Wrapper>
-          <Routes isLoggedIn={isLoggedIn}></Routes>
-        </Wrapper>
-      </HashRouter>
+      <LoginContext.Provider value={{ isLoggedIn: { login, setLogin } }}>
+        <HashRouter>
+          <Wrapper>
+            <Routes isLoggedIn={login}></Routes>
+          </Wrapper>
+        </HashRouter>
+      </LoginContext.Provider>
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
     </ThemeProvider>
   );
 }
 
 export default App;
+export { LoginContext };

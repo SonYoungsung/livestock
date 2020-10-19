@@ -1,8 +1,7 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import SignInPresenter from "./auth/singin/SignInPresenter";
-import SignUpPresenter from "./auth/signup/SignUpPresenter";
 import MainLayout from "./layout/Layout";
+import AuthPresenter from "./auth/AuthPresenter";
 
 interface Props {
   isLoggedIn: boolean;
@@ -20,8 +19,7 @@ function LoggedInRoutes() {
 function LoggedOutRoutes() {
   return (
     <Switch>
-      <Route exact path="/" component={SignInPresenter} />
-      <Route exact path="/signup" component={SignUpPresenter} />
+      <Route exact path="/" component={AuthPresenter} />
       <Redirect from="*" to="/" />
     </Switch>
   );

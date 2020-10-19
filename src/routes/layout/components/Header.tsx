@@ -5,7 +5,7 @@ import "antd/dist/antd.css";
 const { Header } = Layout;
 
 function LayoutHeader() {
-  return <Header></Header>;
+  return <Header>Header</Header>;
 }
 
 export default LayoutHeader;
