@@ -14,9 +14,9 @@ function MainLayout() {
   };
 
   return (
-    <Row>
+    <>
       <Row>
-        <Col span={12}>
+        <Col span={24}>
           <LayoutHeader></LayoutHeader>
         </Col>
       </Row>
@@ -33,7 +33,7 @@ function MainLayout() {
           </Content>
         </Col>
       </Row>
-    </Row>
+    </>
   );
 }
 

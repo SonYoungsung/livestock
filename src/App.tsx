@@ -8,7 +8,7 @@ import Theme from "./assets/style/Theme";
 import { HashRouter } from "react-router-dom";
 import Routes from "./routes/Routes";
 import { ViewContext } from "./routes/auth/AuthPresenter";
-import { uid } from "./api/firebase/auth";
+import { userCheck } from "./api/firebase/auth";
 
 type CType = {
   isLoggedIn: {
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 const LoginContext = createContext<CType | undefined>(undefined);
 
 function App() {
-  const [login, setLogin] = useState(uid === undefined ? false : true);
+  const [login, setLogin] = useState(userCheck() === undefined ? false : true);
 
   return (
     <ThemeProvider theme={Theme}>
