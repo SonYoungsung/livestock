@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Form, Input, Button, Spin, Alert } from "antd";
+import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import { LoginContext } from "../../../App";
@@ -11,7 +11,7 @@ function SignUpPresenter({ signUp }: any) {
 
   const onFinish = async (values: object) => {
     setSpin(true);
-    const result = signUp(values, logined?.isLoggedIn.setLogin, setSpin);
+    signUp(values, logined?.isLoggedIn.setLogin, setSpin);
   };
 
   return (

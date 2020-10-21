@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react";
-import { gql, useQuery } from "@apollo/client";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled, { ThemeProvider } from "styled-components";
@@ -7,8 +6,8 @@ import GlobalStyle from "./assets/style/GlobalStyle";
 import Theme from "./assets/style/Theme";
 import { HashRouter } from "react-router-dom";
 import Routes from "./routes/Routes";
-import { ViewContext } from "./routes/auth/AuthPresenter";
 import { userCheck } from "./api/firebase/auth";
+import { connect } from "react-redux";
 
 type CType = {
   isLoggedIn: {
@@ -43,5 +42,13 @@ function App() {
   );
 }
 
-export default App;
+function mapStateToProps(state: {}) {
+  return { store: state };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return null;
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 export { LoginContext };

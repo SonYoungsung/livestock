@@ -2,17 +2,6 @@ import { auth, ref } from "./fsConfig";
 import { toast } from "react-toastify";
 import firebase from "firebase";
 
-// export const currentUser = (setLogin) => {
-//   return auth.onAuthStateChanged((user) => {
-//     if (user) {
-//       localStorage.setItem("uid", auth.currentUser.uid);
-//       return setLogin(true);
-//     }
-//     return false;
-//   });
-
-// };
-
 export const userCheck = async () => {
   auth.onAuthStateChanged((user) => {
     if (user) {
